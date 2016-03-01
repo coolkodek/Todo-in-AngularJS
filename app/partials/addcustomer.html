@@ -1,0 +1,15 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title> </title>
+</head>
+<body >
+<h1>Add Customer</h1>
+    <form name="custform" ng-submit="addcustomer(custform.$valid)">
+     Name:
+    <input type="text" ng-model="customer.name" required/>*<br />
+    <input type="submit"  value="Add Customer" /> &nbsp <input type="button" ng-click="next()"  value=">> Next >>" />
+    </form>
+   
+</body>
+</html>

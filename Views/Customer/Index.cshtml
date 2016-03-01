@@ -1,0 +1,63 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div ng-app="todoapp">
+
+    <div ng-controller="todocontroller">
+        <form ng-submit="addtodo()">
+        Add your Todo's here :
+        <br />
+        <input type="text" ng-model="todo.text" /><br />
+        Assigned to :
+        <br />
+        <input type="text" ng-model="todo.assignedto" />
+        <br />
+        Due Date :
+        <br />
+        <input type="date" ng-model="todo.duedate" />
+        <br />
+  
+        <input type="submit" value="Add Todos" />
+        </form>
+        <br />
+        <div>
+            Your Todos :<br />
+            filter :
+            <input type="text" ng-model="myfilter" />
+            <table class="table table-bordered">
+                <tr>
+                    <th>
+                        todos
+                    </th>
+                    <th>
+                        assignedto
+                    </th>
+                    <th>
+                        duedate
+                    </th>
+                    <th>
+                        Delete
+                    </th>
+                </tr>
+                <tr ng-repeat="t in todos  | orderBy:'text' | filter : myfilter  track by $index">
+                    <td>
+                        <input type="checkbox" ng-model="t.status" ng-click="addcomplete(t.status,t)" />
+                        &nbsp {{t.text}}
+                    </td>
+                    <td>
+                        {{t.assignedto}}
+                    </td>
+                    <td>
+                      <p ng-bind="t.duedate | date:'MM/dd/yyyy'"></p> 
+                    </td>
+                    <td>
+                        <input type="button" value="Delete" ng-click="deletetodo(t.text)"/>
+                    </td>
+                </tr>
+            </table>
+            <br />
+            <input type="button" value="Synch to database" ng-click="synch()"/>
+        </div>
+    </div>
+</div>
